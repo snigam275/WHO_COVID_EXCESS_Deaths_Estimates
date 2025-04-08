@@ -1,4 +1,4 @@
-# WHO_COVID_EXCESS_Deaths_Estimates_b
+# WHO_COVID_EXCESS_Deaths_Estimates
 EDA on Dataset containing WHO estimates of excess mortality by country associated with the COVID-19 pandemic.A data-driven project analyzing WHO's estimates of excess COVID-19 deaths by country to assess the pandemic's true global impact.
 This project aims to:
 1) Analyze and visualize WHO's COVID-19 excess death estimates by country to understand pandemic impact.
