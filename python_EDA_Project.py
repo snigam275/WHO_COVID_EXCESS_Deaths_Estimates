@@ -21,3 +21,32 @@ print("\nIf null values, then fill with NaN: \n", data.dropna())  #use to replac
 
 #(If we want to delete specific column or row, we use drop() with label/index of column or row)
 print("\nDelete specific column:\n",data.drop(columns=["iso3"]))
+
+#Objectives achieves from the dataset
+# 1) Yearly Excess Death Trends
+
+#Creating a bar graph to represent the yearly excess death trend and summarise excess death of each year of pandemic(mostly 2020,2021)across all countries 
+# Group by year and sum the excess deaths
+yearly_trend = data.groupby("year")["excess.mean*"].sum()
+
+# Plotting
+plt.figure(figsize=(5, 4))
+yearly_trend.plot(kind="bar", color=["Red","Green"], edgecolor="black")
+
+# Add labels and title and legends
+plt.title("Yearly Excess Death Trend (Global)", fontsize=14)
+plt.xlabel("Year")
+plt.ylabel("Total Excess Deaths")
+plt.legend("excess_death",loc="upper left")
+# Show plot
+plt.show()
+
+# Yearly Excess Death Trend by age group 
+age_trend = data.groupby(["year", "age_group"])["excess.mean*"].sum()
+cl = ["green","blue","red"]
+age_trend.plot(kind='bar', color=cl, figsize=(10, 7))
+plt.title("Yearly Excess Death Trend by Age Group")
+plt.xlabel("Year with Age")
+plt.ylabel("Total Excess Deaths")
+plt.legend("Group",loc="upper left")
+
