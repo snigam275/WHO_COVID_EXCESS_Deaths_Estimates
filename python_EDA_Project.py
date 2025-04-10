@@ -73,3 +73,24 @@ plt.title("Country-wise Excess Deaths: 2020 vs 2021", fontsize=14)
 plt.xlabel("Excess Deaths in 2020",fontsize=12)
 plt.ylabel("Excess Deaths in 2021",fontsize=12)
 plt.show()
+
+# 3)Age-group wise COVID impact 
+
+#Creating a barplot to show the impact of COVID on different age group during pandemic
+
+age_data = data[['age_group', 'excess.mean*']].dropna()
+age_data = age_data[age_data['excess.mean*'] >= 0]
+
+# Group by age group and sum the excess deaths
+age_summary = age_data.groupby('age_group', as_index=False)['excess.mean*'].sum()
+
+# Create the bar plot
+plt.figure(figsize=(10, 6))
+sns.barplot(x='age_group', y='excess.mean*', data=age_summary, hue='age_group', palette='viridis',legend=False)
+
+# Label the axes and title
+plt.xlabel('Age Group')
+plt.ylabel('Excess Deaths')
+plt.title('COVID-19 Impact by Age Group')
+
+plt.show()
