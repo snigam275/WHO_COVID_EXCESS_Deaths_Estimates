@@ -50,3 +50,26 @@ plt.xlabel("Year with Age")
 plt.ylabel("Total Excess Deaths")
 plt.legend("Group",loc="upper left")
 
+# 2) Country wise Comparison of Excess deaths
+
+#Creating a scatter plot to show country-wise comparison of Excess deaths during pandemic
+grouped = data.groupby(['country', 'year'])['excess.mean*'].sum().reset_index()
+
+# Get excess deaths for 2020
+excess_2020 = grouped[grouped['year'] == 2020][['country', 'excess.mean*']].rename(columns={'excess.mean*': 'Excess_2020'})
+
+# Get excess deaths for 2021
+excess_2021 = grouped[grouped['year'] == 2021][['country', 'excess.mean*']].rename(columns={'excess.mean*': 'Excess_2021'})
+
+# Merge the two years on country
+merged_data = pd.merge(excess_2020, excess_2021, on='country')
+
+# Create the scatter plot
+plt.figure(figsize=(7, 4))
+sns.scatterplot(data=merged_data,x='Excess_2020',y='Excess_2021',hue='country',palette='tab20',s=100,alpha=0.6,legend=False)
+
+# Labels and title
+plt.title("Country-wise Excess Deaths: 2020 vs 2021", fontsize=14)
+plt.xlabel("Excess Deaths in 2020",fontsize=12)
+plt.ylabel("Excess Deaths in 2021",fontsize=12)
+plt.show()
