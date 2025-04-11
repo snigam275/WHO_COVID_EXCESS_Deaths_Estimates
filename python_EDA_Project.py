@@ -117,3 +117,41 @@ plt.axis('equal')  # Equal aspect ratio ensures pie chart is a circle
 
 plt.show()
 
+# 5) Expected vs Actual Excess Death
+
+#Creating a line graph  to show the top 10 countries with highest excess death during pandemic
+
+# Plot line graph for all data points
+plt.figure(figsize=(10,5))
+
+# Plot expected deaths (all countries, years, age groups)
+#here
+ # X-axis: age groups
+# Y-axis: expected deaths
+#alpha=0.5,  # Transparency to handle overlapping points
+plt.plot(data['age_group'],  data['expected.mean'],  linestyle='--',marker='D', color='blue', alpha=0.5,label='Expected Deaths (All Data)')
+
+# Plot excess deaths (all countries, years, age groups)
+plt.plot(data['age_group'],data['excess.mean*'],linestyle='-',marker='o', markeredgecolor='yellow', markerfacecolor='red',color='green',alpha=0.7,label='Excess Deaths')
+
+# Formatting
+plt.title('Expected vs. Actual Excess Deaths Across All Countries in different Age Groups')
+plt.xlabel('Age Group')
+plt.ylabel('Number of Deaths')
+plt.grid(True)
+plt.show()
+
+#To visually analyze the relationships between different COVID death metrics (expected, actual, and excess) and see how they differ based on gender
+#Select numeric and one categorical column and check the missing values in column
+selected_columns = ['expected.mean', 'acm.mean', 'excess.mean*', 'sex']
+pair_data = data[selected_columns].dropna()
+
+#Set a clean and readable style
+sns.set(style="whitegrid")
+
+#Creating the pairplot with color coding by 'sex'
+pairplot = sns.pairplot(pair_data,hue='sex',palette='bright',diag_kind='kde',height=3,plot_kws={'alpha': 0.7, 's': 50, 'edgecolor': 'k'},corner=False)
+
+#Add title
+pairplot.fig.suptitle("Pairplot of COVID Death Estimates Grouped by Sex", fontsize=14, y=1.02)
+plt.show()
