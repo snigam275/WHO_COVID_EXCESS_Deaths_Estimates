@@ -24,4 +24,25 @@ This project aims to:
   * excess.mean : The difference between actual and expected deaths—indicating excess mortality, possibly due to COVID-19
 ---
 # 🗂️**Features & Visualizations**
-- ## 
+  ## 🎯Features 
+- ### 📌 1. Data OverView
+  This project analyzes the excess deaths during the COVID-19 pandemic using WHO-provided datasets. It focuses on country-wise comparisons, age-group impacts, and temporal trends for the years 2020 
+  and 2021.
+- ### 📌 2. Data Cleaning
+  * Removed NaN and negative excess death values.
+  * Focused on country, year, and age_group for core analysis.
+- ### 📌 3. Feature Engineering
+  * Grouped total excess deaths by country and year.
+  * Extracted top countries and trends by time and demographics
+--- 
+  ## 📈 Visualizations
+- ### 📌 1. Age-Group Wise COVID Impact (Bar Plot)
+  Shows how various age groups were affected. Elderly groups often show higher excess 
+  deaths.
+- ### 📌 2. Country-Wise Comparison: 2020 vs 2021 (Scatter Plot)
+  Helps visualize trends and countries with increasing or decreasing deaths year over 
+  year.
+- ### 📌 3. Top 10 Countries by Excess Deaths (Pie Chart)
+  * Dynamic pie chart using tab20 or gradient colors.
+  * Percentage of global excess deaths attributed to each country.
+  
