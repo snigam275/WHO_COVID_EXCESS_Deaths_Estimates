@@ -154,4 +154,16 @@ pairplot = sns.pairplot(pair_data,hue='sex',palette='bright',diag_kind='kde',hei
 
 #Add title
 pairplot.fig.suptitle("Pairplot of COVID Death Estimates Grouped by Sex", fontsize=14, y=1.02)
+
+#To analyze the relationships between expected.mean, acm.mean, and excess.mean* values — and see how they vary across different age groups
+
+selected_columns = ['expected.mean', 'acm.mean', 'excess.mean*', 'age_group']
+pair_data = data[selected_columns].dropna()  #Drop rows with missing values
+sns.set(style="whitegrid")  #Set a clean and readable style
+
+#Create the pairplot with color coding by age_group
+pairplot = sns.pairplot(pair_data,hue='age_group',palette='Paired',diag_kind='kde',height=3,plot_kws={'alpha': 0.7,'s': 50,'edgecolor':'k'},corner=False)
+
+#Add title
+pairplot.fig.suptitle("Pairplot of COVID Death Estimates Grouped by Age", fontsize=14, y=1.02)
 plt.show()
