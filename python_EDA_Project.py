@@ -209,3 +209,29 @@ sns.boxplot(data=data, x='year', y='excess.mean*')
 plt.title("Boxplot: Excess Deaths by Year (with Outliers)")
 plt.show()
 
+#visualize the distribution and outliers of excess deaths across the top 20 countries (by data availability) using a boxplot
+data = data.dropna(subset=['excess.mean*'])
+
+# Calculate IQR to find outliers
+Q1 = data['excess.mean*'].quantile(0.25)
+Q3 = data['excess.mean*'].quantile(0.75)
+IQR = Q3 - Q1
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+# Find the outliers
+outliers = data[(data['excess.mean*'] < lower_bound) | (data['excess.mean*'] > upper_bound)]
+print("Number of outliers:", len(outliers))
+
+# Get top 20 countries by number of rows
+top_countries = data['country'].value_counts().head(20).index
+
+# Filter the data for only these top 20 countries
+data_top = data[data['country'].isin(top_countries)]
+
+# Plot boxplot for excess deaths by top 20 countries
+plt.figure(figsize=(10, 7))
+sns.boxplot(data=data_top, x='country', y='excess.mean*')
+plt.title("Boxplot: Excess Deaths by Top 20 Countries")
+plt.show()
