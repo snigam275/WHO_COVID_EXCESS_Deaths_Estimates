@@ -167,3 +167,45 @@ pairplot = sns.pairplot(pair_data,hue='age_group',palette='Paired',diag_kind='kd
 #Add title
 pairplot.fig.suptitle("Pairplot of COVID Death Estimates Grouped by Age", fontsize=14, y=1.02)
 plt.show()
+
+#visualize the relationship between COVID-19 related death metrics (expected.mean, acm.mean, and excess.mean*) using a correlation heatmap.
+# Select only numerical columns
+columns = ['expected.mean', 'acm.mean', 'excess.mean*']
+numeric_data = data[columns].dropna()
+
+# Calculate correlation matrix
+correlation = numeric_data.corr()
+
+# Set style
+sns.set(style="white")
+
+# Create the heatmap
+plt.figure(figsize=(7, 5))
+sns.heatmap(correlation, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title("Correlation Between COVID Death Metrics")
+plt.show()
+
+#visualize outliers in the "excess.mean*" column based on the year using a boxplot.
+# Drop rows with missing values in 'excess.mean*'
+data = data.dropna(subset=['excess.mean*'])
+
+# Calculate IQR to find outliers
+Q1 = data['excess.mean*'].quantile(0.25)
+Q3 = data['excess.mean*'].quantile(0.75)
+IQR = Q3 - Q1
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+# Find the outliers
+outliers = data[(data['excess.mean*'] < lower_bound) | (data['excess.mean*'] > upper_bound)]
+
+# Print how many outliers are found
+print("Number of outliers:", len(outliers))
+
+# Plot the boxplot for Excess Deaths by Year
+plt.figure(figsize=(8, 6))
+sns.boxplot(data=data, x='year', y='excess.mean*')
+plt.title("Boxplot: Excess Deaths by Year (with Outliers)")
+plt.show()
+
