@@ -93,4 +93,27 @@ plt.xlabel('Age Group')
 plt.ylabel('Excess Deaths')
 plt.title('COVID-19 Impact by Age Group')
 
+plt.show() 
+
+# 4) Top 10 countries with the highest Excess Death
+
+#Creating a pie chart to show the top 10 countries with highest excess death during pandemic
+
+# Group by country and sum excess deaths across all years
+country_deaths = data.groupby('country')['excess.mean*'].sum().reset_index()
+
+# Sort and get top 10 countries
+top10 = country_deaths.sort_values(by='excess.mean*', ascending=False).head(10)
+
+# Plot pie chart
+plt.figure(figsize=(9, 7))
+#clr = ['Skyblue', 'blue', 'green', 'orange', 'purple', 'cyan', 'magenta', 'yellow', 'brown', 'gray']
+clr =  plt.cm.tab20.colors # A colormap with 10 distinct colors 
+plt.pie(top10['excess.mean*'], labels=top10['country'], autopct='%1.1f%%', startangle=160,colors=clr,textprops={'fontsize': 10})
+
+# Label the title
+plt.title('Top 10 Countries by Total Excess Deaths (COVID-19)', fontsize=16)
+plt.axis('equal')  # Equal aspect ratio ensures pie chart is a circle 
+
 plt.show()
+
