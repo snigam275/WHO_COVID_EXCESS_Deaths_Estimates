@@ -62,8 +62,10 @@ This project aims to:
   * Boxplot showing distribution and outliers of excess deaths across top 20 
     countries (by data availability).
 
---- # 💻**Technologies Used**
-    * Language - Python
+--- 
+# 💻**Technologies Used**
+    * Language 
+      Python
     * Libraries :
        *Numpy
        *Pandas
