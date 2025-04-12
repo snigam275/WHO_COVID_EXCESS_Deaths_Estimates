@@ -63,11 +63,10 @@ This project aims to:
     countries (by data availability).
 
 --- 
-# 💻**Technologies Used**
-    * Language 
-      Python
-    * Libraries :
-       *Numpy
-       *Pandas
-       *Matplotlib
-       *Seaborn
+# 💻 Technologies Used
+ ## Lnaguage and libraries
+  * Python
+  * Numpy
+  * Pandas
+  * Matplotlib
+  * Seaborn
