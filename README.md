@@ -37,12 +37,35 @@ This project aims to:
 --- 
   ## 📈 Visualizations
 - ### 📌 1. Age-Group Wise COVID Impact (Bar Plot)
-  Shows how various age groups were affected. Elderly groups often show higher excess 
+  Shows how various age groups were affected. Elderly groups often show higher 
+  excess 
   deaths.
 - ### 📌 2. Country-Wise Comparison: 2020 vs 2021 (Scatter Plot)
-  Helps visualize trends and countries with increasing or decreasing deaths year over 
+  Helps visualize trends and countries with increasing or decreasing deaths year 
+  over 
   year.
 - ### 📌 3. Top 10 Countries by Excess Deaths (Pie Chart)
   * Dynamic pie chart using tab20 or gradient colors.
   * Percentage of global excess deaths attributed to each country.
-  
+- ### 📌 4. COVID-19 Impact by Age Group
+  * Bar plot showing total excess deaths for each age group.
+- ### 📌 5. Expected vs. Actual Excess Deaths by Age Group
+  * Line plot comparing expected vs actual excess deaths across age groups.
+- ### 📌 6. Pairplot: Death Estimates Grouped by Sex
+  * Pairplot showing relationships between expected.mean, acm.mean, excess.mean*, 
+    colored by sex.
+- ### 📌 7. Pairplot: Death Estimates Grouped by Age Group
+  * Pairplot showing the same metrics, colored by age group.
+- ### 📌 8. Boxplot of Excess Deaths by Year
+  * Boxplot visualizing distribution and outliers of excess deaths per year.
+- ### 📌 9. Boxplot of Excess Deaths for Top 20 Countries
+  * Boxplot showing distribution and outliers of excess deaths across top 20 
+    countries (by data availability).
+
+--- # 💻**Technologies Used**
+    * Language - Python
+    * Libraries :
+       *Numpy
+       *Pandas
+       *Matplotlib
+       *Seaborn
